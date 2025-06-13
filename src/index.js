@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
-  res.send("Welcome to the Dribs.");
+  res.send("Welcome to the Dribs 2.");
 });
 
 app.post("/api", (req, res) => {

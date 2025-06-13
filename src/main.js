@@ -16,6 +16,7 @@ export async function main(requestBody) {
   try {
     // 1. Parsear o payload do Slack
     const slackData = parseSlackPayload(requestBody);
+    return slackData;
 
     // Verificar se é uma solicitação de ajuda
     if (!slackData.text || slackData.text.toLowerCase() === "help") {
