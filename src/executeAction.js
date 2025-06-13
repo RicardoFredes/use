@@ -7,7 +7,7 @@ const resources = {
 /**
  * Executa a ação solicitada no recurso
  * @param {string} resource - Nome do recurso
- * @param {string} action - Ação a ser executada (on, off, new, del, list)
+ * @param {string} action - Ação a ser executada (on, off, add, del, list)
  * @param {string} userId - ID do usuário que executou a ação
  * @param {string} userName - Nome do usuário que executou a ação
  * @returns {Object} - Contrato para montar a mensagem
@@ -21,8 +21,8 @@ export async function executeAction(resource, action, userId, userName) {
         return handleOffAction(resource, userId, userName);
       case "off-force":
         return handleOffForceAction(resource, userId, userName);
-      case "new":
-        return handleNewAction(resource);
+      case "add":
+        return handleAddAction(resource);
       case "del":
         return handleDelAction(resource);
       case "list":
@@ -120,7 +120,7 @@ function handleOffForceAction(resource, userId, userName) {
   }
 }
 
-function handleNewAction(resource) {
+function handleAddAction(resource) {
   if (resources[resource]) {
     return {
       type: "ephemeral",

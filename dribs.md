@@ -15,7 +15,7 @@ O app utiliza comandos slash do Slack para registrar reservas, devoluções, fil
 | Ação        | Exemplo                     | Descrição                                              | Tipo de Mensagem |
 |-------------|----------------------------|--------------------------------------------------------|------------------|
 | list        | `/dribs list`              | Lista todos os recursos e seu status                   | Privada          |
-| new         | `/dribs new vassoura`      | Cadastra um novo recurso                               | Pública          |
+| add         | `/dribs add vassoura`      | Cadastra um novo recurso                               | Pública          |
 | del         | `/dribs del vassoura`      | Remove um recurso                                      | Pública          |
 | on          | `/dribs on vassoura`       | Reserva um recurso ou entra na fila de espera          | Pública/Privada  |
 | off         | `/dribs off vassoura`      | Devolve o recurso ou sai da fila                       | Pública          |
@@ -45,7 +45,7 @@ vassoura (em uso por @usuario_A)
 balde (disponível)
 
 ### 5. Cadastrar Recurso
-**Comando:** `/dribs new escada`
+**Comando:** `/dribs add escada`
 - **Resposta pública:** `Recurso "escada" cadastrado com sucesso.`
 
 ### 6. Remover Recurso
