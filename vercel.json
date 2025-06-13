@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/api/*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/src/api/$1.js"
-    }
-  ]
+  "builds": [{ "src": "src/api/dribs.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/src/api/index.js" }]
 }
