@@ -19,7 +19,7 @@ O app utiliza comandos slash do Slack para registrar reservas, devoluções, fil
 | del         | `/use del vassoura`      | Remove um recurso                                      | Pública          |
 | on          | `/use on vassoura`       | Reserva um recurso ou entra na fila de espera          | Pública/Privada  |
 | off         | `/use off vassoura`      | Devolve o recurso ou sai da fila                       | Pública          |
-| off-force   | `/use off-force vassoura`| Força a liberação do recurso                           | Pública          |
+| force-off   | `/use force-off vassoura`| Força a liberação do recurso                           | Pública          |
 
 ## Fluxos de Uso
 
@@ -53,7 +53,7 @@ balde (disponível)
 - **Resposta pública:** `Recurso "escada" removido.`
 
 ### 7. Liberação Forçada
-**Comando:** `/use off-force vassoura`
+**Comando:** `/use force-off vassoura`
 - **Resposta pública:** `*vassoura* foi liberada à força.`
 - Se houver fila: `*vassoura* está agora com @proximo_da_fila.`
 

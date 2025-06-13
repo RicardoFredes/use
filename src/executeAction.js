@@ -1,7 +1,7 @@
 // Simulação da base de dados em memória
 const resources = {
-  vassoura: { user: "U123", queue: [] },
-  balde: { user: null, queue: [] },
+  // vassoura: { user: "U123", queue: [] },
+  // balde: { user: null, queue: [] },
 };
 
 /**
@@ -19,8 +19,8 @@ export async function executeAction(resource, action, userId, userName) {
         return handleOnAction(resource, userId, userName);
       case "off":
         return handleOffAction(resource, userId, userName);
-      case "off-force":
-        return handleOffForceAction(resource, userId, userName);
+      case "force-off":
+        return handleForceOffAction(resource, userId, userName);
       case "add":
         return handleAddAction(resource);
       case "del":
@@ -98,7 +98,7 @@ function handleOffAction(resource, userId, userName) {
   }
 }
 
-function handleOffForceAction(resource, userId, userName) {
+function handleForceOffAction(resource, userId, userName) {
   if (!resources[resource]) {
     throw new Error(`Recurso "${resource}" não encontrado.`);
   }
@@ -110,7 +110,7 @@ function handleOffForceAction(resource, userId, userName) {
   if (previousUser) {
     return {
       type: "in_channel",
-      text: `:exclamation: *${resource}* foi liberado à força por <@${userId}>.`,
+      text: `:exclamation: *${resource}* foi liberado com force por <@${userId}>.`,
     };
   } else {
     return {

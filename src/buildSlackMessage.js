@@ -64,7 +64,7 @@ export function buildHelpMessage() {
 \`/use del [recurso]\` - Remove um recurso
 \`/use on [recurso]\` - Reserva um recurso ou entra na fila
 \`/use off [recurso]\` - Devolve o recurso ou sai da fila
-\`/use off-force [recurso]\` - Força a liberação do recurso
+\`/use force-off [recurso]\` - Força a liberação do recurso
 
 *Exemplos:*
 \`/use on vassoura\`
