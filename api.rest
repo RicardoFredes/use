@@ -14,7 +14,7 @@ Content-Type: application/json
   "user_id":"U091LK76W81",
   "user_name":"desenvolvedorfredes",
   "command":"/dribs",
-  "text":"help",
+  "text":"list vassoura",
   "api_app_id":"A0911LFMU6A",
   "is_enterprise_install":"false",
   "response_url":"https://hooks.slack.com/commands/T091LK76W57/9049462521906/EV1SvoLSiCoMMfpciLyz1zzb",

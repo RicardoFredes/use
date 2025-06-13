@@ -7,12 +7,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
-  res.send("Welcome to the Dribs 3.");
+  res.send("Welcome to the Dribs v0.");
 });
 
 app.post("/api", async (req, res) => {
   const response = await main(req.body);
-  return res.json({response});
+  return res.json(response);
 });
 
 export default app;
