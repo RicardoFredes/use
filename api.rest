@@ -13,7 +13,7 @@ Content-Type: application/json
   "channel_name":"social",
   "user_id":"U091LK76W81",
   "user_name":"desenvolvedorfredes",
-  "command":"/dribs",
+  "command":"/use",
   "text":"list vassoura",
   "api_app_id":"A0911LFMU6A",
   "is_enterprise_install":"false",

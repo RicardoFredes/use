@@ -57,19 +57,19 @@ export function buildErrorMessage(errorMessage) {
  */
 export function buildHelpMessage() {
   const helpText = `
-:information_source: *Como usar o /dribs:*
+:information_source: *Como usar o /use:*
 
-\`/dribs list\` - Lista todos os recursos e status
-\`/dribs new [recurso]\` - Cadastra um novo recurso
-\`/dribs del [recurso]\` - Remove um recurso
-\`/dribs on [recurso]\` - Reserva um recurso ou entra na fila
-\`/dribs off [recurso]\` - Devolve o recurso ou sai da fila
-\`/dribs off-force [recurso]\` - Força a liberação do recurso
+\`/use list\` - Lista todos os recursos e status
+\`/use new [recurso]\` - Cadastra um novo recurso
+\`/use del [recurso]\` - Remove um recurso
+\`/use on [recurso]\` - Reserva um recurso ou entra na fila
+\`/use off [recurso]\` - Devolve o recurso ou sai da fila
+\`/use off-force [recurso]\` - Força a liberação do recurso
 
 *Exemplos:*
-\`/dribs on vassoura\`
-\`/dribs off vassoura\`
-\`/dribs new escada\`
+\`/use on vassoura\`
+\`/use off vassoura\`
+\`/use new escada\`
   `.trim();
 
   return {

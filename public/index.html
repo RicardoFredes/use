@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use — Gerencie Recursos no Slack</title>
+    <script src="https://unpkg.com/@unocss/runtime"></script>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white min-h-screen flex flex-col items-center px-4 py-10">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-2">Use</h1>
+      <p class="text-lg text-gray-300 max-w-xl mx-auto">
+        Gerencie ambientes de staging, contas compartilhadas e dispositivos de teste diretamente pelo Slack.
+      </p>
+    </header>
+
+    <section class="max-w-xl text-center mb-14">
+      <h2 class="text-2xl font-semibold mb-4">🛠️ Criado para times de desenvolvimento</h2>
+      <p class="text-gray-400">
+        Use comandos simples no Slack para coordenar o uso de recursos como <span class="italic">staging-api</span>, <span class="italic">figma-pro</span> ou <span class="italic">iphone13</span>.
+        Evite conflitos, filas escondidas e surpresas desagradáveis.
+      </p>
+    </section>
+
+    <section class="w-full max-w-2xl mb-14">
+      <h2 class="text-xl font-semibold mb-4 text-center">📋 Exemplos de comandos</h2>
+      <div class="bg-white text-black rounded-xl p-6 shadow-lg text-left space-y-2 text-sm">
+        <code class="block">/use add staging-api</code>
+        <code class="block">/use on staging-api</code>
+        <code class="block">/use off staging-api</code>
+        <code class="block">/use list</code>
+        <code class="block">/use on iphone13</code>
+        <code class="block">/use off-force vpn-teste</code>
+      </div>
+    </section>
+
+    <section class="max-w-xl text-center mb-14">
+      <h2 class="text-xl font-semibold mb-4">⚙️ Recursos comuns</h2>
+      <p class="text-gray-400">
+        Use funciona com qualquer item compartilhado do time:
+      </p>
+      <ul class="list-none text-gray-300 mt-4 text-sm space-y-1">
+        <li>• staging-api, staging-db, env-mobile</li>
+        <li>• figma-pro, firebase-teste, conta-admin</li>
+        <li>• iphone13, ipad-mini, macbook-teste</li>
+        <li>• sala-reuniao-1, call-retro, standup-vc</li>
+      </ul>
+    </section>
+
+    <section class="max-w-xl text-center mb-14">
+      <h2 class="text-xl font-semibold mb-4">✅ Benefícios</h2>
+      <ul class="text-gray-300 text-sm space-y-2">
+        <li>✔️ Evita conflitos em recursos compartilhados</li>
+        <li>✔️ Transparência sobre quem está com o quê</li>
+        <li>✔️ Fila automática e notificações privadas</li>
+        <li>✔️ Totalmente integrado ao Slack via comandos slash</li>
+      </ul>
+    </section>
+
+    <footer class="text-sm text-gray-500 text-center mt-auto pt-10 border-t border-white/10 w-full">
+      <p>© 2025 Use — Para times que compartilham recursos</p>
+    </footer>
+  </body>
+</html>
