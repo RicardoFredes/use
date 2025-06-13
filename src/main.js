@@ -1,4 +1,3 @@
-// main.js
 import { parseSlackPayload } from "./parseSlackPayload.js";
 import { parseCommandText } from "./parseCommandText.js";
 import { executeAction } from "./executeAction.js";
@@ -46,48 +45,3 @@ export async function main(requestBody) {
     return buildErrorMessage(error.message);
   }
 }
-
-/**
- * Função para ser usada como handler da Vercel
- * @param {Request} request - Objeto Request da Vercel
- * @returns {Response} - Resposta HTTP
- */
-export async function handler(request) {
-  try {
-    // Verifica se é um POST
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", {
-        status: 405,
-        headers: { "Content-Type": "text/plain" },
-      });
-    }
-
-    // Lê o corpo da requisição
-    const requestBody = await request.text();
-
-    // Processa a requisição
-    const slackResponse = await main(requestBody);
-
-    // Retorna a resposta para o Slack
-    return new Response(JSON.stringify(slackResponse), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } catch (error) {
-    console.error("Erro no handler:", error.message);
-
-    // Retorna erro 500 em caso de falha crítica
-    const errorResponse = buildErrorMessage("Erro interno do servidor.");
-    return new Response(JSON.stringify(errorResponse), {
-      status: 200, // Slack espera 200 mesmo em caso de erro de aplicação
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
-}
-
-// Para compatibilidade com diferentes ambientes
-export default handler;
