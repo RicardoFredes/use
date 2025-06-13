@@ -7,12 +7,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
-  res.send("Welcome to the Dribs 2.");
+  res.send("Welcome to the Dribs 3.");
 });
 
 app.post("/api", (req, res) => {
   const response = main(req.body);
-  res.json(response);
+  res.send(JSON.stringify(response));
 });
 
 app.post("/api/debug", (req, res) => {
