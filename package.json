@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/api/dribs.js",
+  "engines": {
+    "node": "18.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.6.1"
+  "packageManager": "pnpm@10.6.1",
+  "dependencies": {
+    "vercel": "^43.1.0"
+  }
 }
