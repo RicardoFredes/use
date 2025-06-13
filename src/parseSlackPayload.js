@@ -1,17 +1,14 @@
 /**
  * Parseia o payload enviado pelo Slack via slash command
- * @param {string} body - Corpo da requisição em formato x-www-form-urlencoded
+ * @param {Object} data - Corpo da requisição em formato JSON
  * @returns {Object} - { text, userId, userName, timestamp }
  */
-export function parseSlackPayload(body) {
+export function parseSlackPayload(data) {
   try {
-    // Parse do corpo URL-encoded
-    const params = new URLSearchParams(body);
-
     // Extrai os dados necessários
-    const text = params.get("text") || "";
-    const userId = params.get("user_id") || "";
-    const userName = params.get("user_name") || "";
+    const text = data.text || "";
+    const userId = data.user_id || "";
+    const userName = data.user_name || "";
     const timestamp = new Date().toISOString();
 
     return {
@@ -20,10 +17,10 @@ export function parseSlackPayload(body) {
       userName,
       timestamp,
       // Dados extras que podem ser úteis
-      channelId: params.get("channel_id") || "",
-      channelName: params.get("channel_name") || "",
-      responseUrl: params.get("response_url") || "",
-      command: params.get("command") || "",
+      channelId: data.channel_id || "",
+      channelName: data.channel_name || "",
+      responseUrl: data.response_url || "",
+      command: data.command || "",
     };
   } catch (error) {
     throw new Error(`Erro ao parsear payload do Slack: ${error.message}`);

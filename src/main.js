@@ -9,7 +9,7 @@ import {
 
 /**
  * Função principal que orquestra todo o fluxo do aplicativo
- * @param {string} requestBody - Corpo da requisição HTTP do Slack
+ * @param {Object} requestBody - Corpo da requisição HTTP do Slack
  * @returns {Object} - Resposta formatada para o Slack
  */
 export async function main(requestBody) {
