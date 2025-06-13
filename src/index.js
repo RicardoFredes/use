@@ -23,6 +23,7 @@ app.post("/api/debug", (req, res) => {
   return res.json({
     message: "Debug endpoint hit",
     body: req.body,
+    res: JSON.stringify(req, null, 2),
   });
 });
 
