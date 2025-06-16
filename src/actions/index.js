@@ -34,12 +34,12 @@ export async function executeAction(
       case "force-off":
         return handleForceOffAction(externalId, resource, userId, userName);
       case "add":
-        return handleAddAction(externalId, resource);
+        return handleAddAction(externalId, resource, userId);
       case "del":
-        return handleDelAction(externalId, resource);
+        return handleDelAction(externalId, resource, userId);
       case "queue":
       case "q":
-        return handleQueueAction(externalId, resource);
+        return handleQueueAction(externalId, resource, userId);
       case "list":
       case "ls":
         return handleListAction(externalId);

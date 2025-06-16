@@ -21,7 +21,7 @@ export async function handleOffAction(externalId, resourceName, userId) {
     await updateResourceData(resource.id, null);
 
     return publicMessage(
-      "white_check_mark",
+      "sparkles",
       `\`${resourceName}\` foi liberado por <@${userId}>.`
     );
   }
@@ -32,7 +32,7 @@ export async function handleOffAction(externalId, resourceName, userId) {
   await updateResourceData(resource.id, nextUser, resource.queue);
 
   return publicMessage(
-    "white_check_mark",
+    "lock",
     `\`${resourceName}\` foi liberado por <@${userId}> e agora está com <@${nextUser}>.`
   );
 }

@@ -30,7 +30,7 @@ export async function handleForceOffAction(externalId, resourceName, userId) {
   await updateResourceData(resource.id, nextUser, resource.queue);
 
   return publicMessage(
-    "white_check_mark",
+    "lock",
     `\`${resourceName}\` foi liberado à força por <@${userId}> e agora está com <@${nextUser}>.`
   );
 }

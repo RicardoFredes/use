@@ -13,14 +13,14 @@ export async function handleOnAction(externalId, resourceName, userId) {
   if (!resource.user) {
     await updateResourceData(resource.id, userId);
     return publicMessage(
-      "",
-      `\`${resourceName}\` está agora com <@${userId}>.`
+      "lock",
+      `\`${resourceName}\` está em use por <@${userId}>.`
     );
   }
 
   if (resource.user === userId) {
     return privateMessage(
-      "warning",
+      "eyeglasses",
       `\`${resourceName}\` já está em uso por você.`
     );
   }
@@ -33,6 +33,6 @@ export async function handleOnAction(externalId, resourceName, userId) {
 
   return privateMessage(
     "hourglass",
-    `\`${resourceName}\` já está em uso por <@${resource.user}>. Você entrou na fila de espera.`
+    `\`${resourceName}\` está em uso por <@${resource.user}>. Você entrou na fila de espera.`
   );
 }

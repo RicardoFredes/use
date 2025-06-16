@@ -2,7 +2,7 @@ import { delResource, getResourceByName } from "../supabase/index.js";
 import { getNotFoundError } from "../utils/errors.js";
 import { publicMessage } from "../utils/message.js";
 
-export async function handleDelAction(externalId, resourceName) {
+export async function handleDelAction(externalId, resourceName, userId) {
   const resource = await getResourceByName(externalId, resourceName);
 
   if (!resource) {
@@ -12,7 +12,7 @@ export async function handleDelAction(externalId, resourceName) {
   await delResource(resource.id);
 
   return publicMessage(
-    "white_check_mark",
-    `\`${resourceName}\` foi removido com sucesso.`
+    "wastebasket",
+    `\`${resourceName}\` foi removido por <@${userId}>.`
   );
 }
