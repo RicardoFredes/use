@@ -2,7 +2,7 @@
 GET http://localhost:3000/
 
 ### API
-POST http://localhost:3000/api
+POST http://localhost:3000/api/slack
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
   "channel_id":"C091LK7NYJD",
   "user_name":"desenvolvedorfredes",
   "command":"/use",
-  "text":"help",
+  "text":"ls",
   "api_app_id":"A0911LFMU6A",
   "is_enterprise_install":"false",
   "response_url":"https://hooks.slack.com/commands/T091LK76W57/9049462521906/EV1SvoLSiCoMMfpciLyz1zzb",
