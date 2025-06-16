@@ -14,7 +14,7 @@ export async function handleOnAction(externalId, resourceName, userId) {
     await updateResourceData(resource.id, userId);
     return publicMessage(
       "lock",
-      `\`${resourceName}\` está em use por <@${userId}>.`
+      `\`${resourceName}\` está em uso por <@${userId}>.`
     );
   }
 
