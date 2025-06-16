@@ -1,30 +1,27 @@
-import { getResourceByName } from "../supabase/index.js";
+import { getResourceByName, updateResourceData } from "../supabase/index.js";
+import { getNotFoundError } from "../utils/errors.js";
+import { privateMessage, publicMessage } from "../utils/message.js";
 
-export async function handleForceOffAction(
-  externalId,
-  resourceName,
-  userId,
-  userName
-) {
+export async function handleForceOffAction(externalId, resourceName, userId) {
   const resource = await getResourceByName(externalId, resourceName);
 
   if (!resource) {
-    throw new Error(`\`${resourceName}\` não foi encontrado.`);
+    throw getNotFoundError(resourceName);
   }
 
   if (!resource.user) {
     await updateResourceData(resource.id, null);
-    return {
-      type: "ephemeral",
-      text: `:white_check_mark: \`${resourceName}\` já está liberado.`,
-    };
+    return privateMessage(
+      "warning",
+      `\`${resourceName}\` já está liberado. Não há ninguém usando.`
+    );
   }
 
   if (!resource.queue.length) {
-    return {
-      type: "in_channel",
-      text: `:exclamation: \`${resourceName}\` foi liberado com force por <@${userId}>.`,
-    };
+    return publicMessage(
+      "exclamation",
+      `\`${resourceName}\` foi liberado à força por <@${userId}>.`
+    );
   }
 
   // Atribui o recurso ao próximo da fila
@@ -32,8 +29,8 @@ export async function handleForceOffAction(
 
   await updateResourceData(resource.id, nextUser, resource.queue);
 
-  return {
-    type: "in_channel",
-    text: `:white_check_mark: \`${resourceName}\` foi liberado com force por <@${userId}> e agora está com <@${nextUser}>.`,
-  };
+  return publicMessage(
+    "white_check_mark",
+    `\`${resourceName}\` foi liberado à força por <@${userId}> e agora está com <@${nextUser}>.`
+  );
 }

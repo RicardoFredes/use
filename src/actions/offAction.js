@@ -1,31 +1,29 @@
 import { getResourceByName, updateResourceData } from "../supabase/index.js";
+import { getNotFoundError } from "../utils/errors.js";
+import { privateMessage, publicMessage } from "../utils/message.js";
 
-export async function handleOffAction(
-  externalId,
-  resourceName,
-  userId,
-  userName
-) {
+export async function handleOffAction(externalId, resourceName, userId) {
   const resource = await getResourceByName(externalId, resourceName);
 
   if (!resource) {
-    throw new Error(`\`${resourceName}\` não foi encontrado.`);
+    throw getNotFoundError(resourceName);
   }
 
   if (resource.user !== userId) {
-    return {
-      type: "ephemeral",
-      text: `:warning: \`${resourceName}\` não está em uso por você.`,
-    };
+    return privateMessage(
+      "warning",
+      `\`${resourceName}\` não está em uso por você.`
+    );
   }
 
   // Libera o recurso
   if (!resource.queue.length) {
     await updateResourceData(resource.id, null);
-    return {
-      type: "in_channel",
-      text: `:white_check_mark: \`${resourceName}\` está liberado.`,
-    };
+
+    return publicMessage(
+      "white_check_mark",
+      `\`${resourceName}\` foi liberado por <@${userId}>.`
+    );
   }
 
   // Atribui o recurso ao próximo da fila
@@ -33,8 +31,8 @@ export async function handleOffAction(
 
   await updateResourceData(resource.id, nextUser, resource.queue);
 
-  return {
-    type: "in_channel",
-    text: `:white_check_mark: \`${resourceName}\` foi liberado e agora está com <@${nextUser}>.`,
-  };
+  return publicMessage(
+    "white_check_mark",
+    `\`${resourceName}\` foi liberado por <@${userId}> e agora está com <@${nextUser}>.`
+  );
 }

@@ -7,26 +7,30 @@
  */
 export function buildSlackMessage(actionResult) {
   try {
-    if (!actionResult || typeof actionResult !== 'object') {
+    if (!actionResult || typeof actionResult !== "object") {
       throw new Error("Resultado da ação inválido.");
     }
 
     const { type, text } = actionResult;
 
     if (!type || !text) {
-      throw new Error("Contrato da ação incompleto (type e text são obrigatórios).");
+      throw new Error(
+        "Contrato da ação incompleto (type e text são obrigatórios)."
+      );
     }
 
     // Valida o tipo de resposta
-    const validTypes = ['in_channel', 'ephemeral'];
+    const validTypes = ["in_channel", "ephemeral"];
     if (!validTypes.includes(type)) {
-      throw new Error(`Tipo de resposta inválido: ${type}. Use: ${validTypes.join(', ')}`);
+      throw new Error(
+        `Tipo de resposta inválido: ${type}. Use: ${validTypes.join(", ")}`
+      );
     }
 
     // Monta a mensagem no formato esperado pelo Slack
     const slackMessage = {
       response_type: type,
-      text: text
+      text: text,
     };
 
     return slackMessage;
@@ -34,7 +38,7 @@ export function buildSlackMessage(actionResult) {
     // Em caso de erro, retorna uma mensagem de erro privada
     return {
       response_type: "ephemeral",
-      text: `:x: Erro interno: ${error.message}`
+      text: `:x: Erro interno: ${error.message}`,
     };
   }
 }
@@ -47,33 +51,6 @@ export function buildSlackMessage(actionResult) {
 export function buildErrorMessage(errorMessage) {
   return {
     response_type: "ephemeral",
-    text: `:x: ${errorMessage}`
-  };
-}
-
-/**
- * Função auxiliar para criar mensagens de ajuda
- * @returns {Object} - Mensagem de ajuda formatada para o Slack
- */
-export function buildHelpMessage() {
-  const helpText = `
-:information_source: *Como usar o /use:*
-
-\`/use list\` - Lista todos os recursos e status
-\`/use new [recurso]\` - Cadastra um novo recurso
-\`/use del [recurso]\` - Remove um recurso
-\`/use on [recurso]\` - Reserva um recurso ou entra na fila
-\`/use off [recurso]\` - Devolve o recurso ou sai da fila
-\`/use force-off [recurso]\` - Força a liberação do recurso
-
-*Exemplos:*
-\`/use on vassoura\`
-\`/use off vassoura\`
-\`/use new escada\`
-  `.trim();
-
-  return {
-    response_type: "ephemeral",
-    text: helpText
+    text: `:x: ${errorMessage}`,
   };
 }

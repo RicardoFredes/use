@@ -1,9 +1,11 @@
 import { handleAddAction } from "./addAction.js";
 import { handleDelAction } from "./delAction.js";
 import { handleForceOffAction } from "./forceOffAction.js";
+import { handleHelpAction } from "./helpAction.js";
 import { handleListAction } from "./listAction.js";
 import { handleOffAction } from "./offAction.js";
 import { handleOnAction } from "./onAction.js";
+import { handleQueueAction } from "./queueAction.js";
 
 /**
  * Executa a ação solicitada no recurso
@@ -23,6 +25,8 @@ export async function executeAction(
 ) {
   try {
     switch (action) {
+      case "help":
+        return handleHelpAction();
       case "on":
         return handleOnAction(externalId, resource, userId, userName);
       case "off":
@@ -33,10 +37,14 @@ export async function executeAction(
         return handleAddAction(externalId, resource);
       case "del":
         return handleDelAction(externalId, resource);
+      case "queue":
+      case "q":
+        return handleQueueAction(externalId, resource);
       case "list":
+      case "ls":
         return handleListAction(externalId);
       default:
-        throw new Error(`Ação "${action}" inválida.`);
+        throw new Error(`Essa ação "${action}" é inválida.`);
     }
   } catch (error) {
     // Propaga o erro para ser tratado na função principal

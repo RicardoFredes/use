@@ -1,11 +1,7 @@
 import { parseSlackPayload } from "./parseSlackPayload.js";
 import { parseCommandText } from "./parseCommandText.js";
 import { executeAction } from "./actions/index.js";
-import {
-  buildSlackMessage,
-  buildErrorMessage,
-  buildHelpMessage,
-} from "./buildSlackMessage.js";
+import { buildSlackMessage, buildErrorMessage } from "./buildSlackMessage.js";
 
 /**
  * Função principal que orquestra todo o fluxo do aplicativo
@@ -16,11 +12,6 @@ export async function main(requestBody) {
   try {
     // 1. Parsear o payload do Slack
     const slackData = parseSlackPayload(requestBody);
-
-    // Verificar se é uma solicitação de ajuda
-    if (!slackData.text || slackData.text.toLowerCase() === "help") {
-      return buildHelpMessage();
-    }
 
     // 2. Parsear o texto do comando
     const { action, resource } = parseCommandText(slackData.text);

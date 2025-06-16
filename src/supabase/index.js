@@ -19,7 +19,7 @@ function serializeResources(data) {
   for (const i of data) {
     resources[i.name] = {
       queue: resources.queue,
-      user: resources.external_user_id,
+      user: resources.user,
     };
   }
 
@@ -50,7 +50,7 @@ export async function addResource(externalId, name) {
 export async function updateResourceData(id, user = null, queue = []) {
   await getSupabase()
     .from(TABLE)
-    .update({ external_user_id: user, queue })
+    .update({ user, queue })
     .eq("id", id);
 }
 

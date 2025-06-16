@@ -14,7 +14,8 @@ export function parseCommandText(commandText) {
 
     if (!resource) {
       // A ação "list" não precisa de recurso
-      if (action.toLowerCase() !== "list") {
+      const skippedActions = ["list", "ls", "help"];
+      if (!skippedActions.includes(action.toLowerCase())) {
         throw new Error("Recurso não especificado.");
       }
     }

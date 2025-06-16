@@ -1,16 +1,18 @@
 import { getAllResources } from "../supabase/index.js";
+import { privateMessage } from "../utils/message.js";
 
 export async function handleListAction(externalId) {
   const resources = await getAllResources(externalId);
 
   if (!Object.keys(resources).length) {
-    return {
-      type: "ephemeral",
-      text: "Nada cadastrado ainda",
-    };
+    return privateMessage(
+      "",
+      "Nenhum recurso cadastrado.\n`/use add {NOME}` para adicionar um recurso."
+    );
   }
 
   let message = "Recursos cadastrados:\n";
+
   for (const resource in resources) {
     const status = resources[resource].user
       ? `em uso por <@${resources[resource].user}>`
@@ -18,8 +20,5 @@ export async function handleListAction(externalId) {
     message += `- \`${resource}\` (${status})\n`;
   }
 
-  return {
-    type: "ephemeral",
-    text: message,
-  };
+  return privateMessage("", message);
 }

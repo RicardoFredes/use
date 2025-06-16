@@ -1,18 +1,18 @@
 import { delResource, getResourceByName } from "../supabase/index.js";
+import { getNotFoundError } from "../utils/errors.js";
+import { publicMessage } from "../utils/message.js";
 
 export async function handleDelAction(externalId, resourceName) {
   const resource = await getResourceByName(externalId, resourceName);
+
   if (!resource) {
-    return {
-      type: "ephemeral",
-      text: `:warning: \`${resourceName}\` não foi encontrado.`,
-    };
+    throw getNotFoundError(resourceName);
   }
 
   await delResource(resource.id);
 
-  return {
-    type: "in_channel",
-    text: `:white_check_mark: \`${resourceName}\` foi removido.`,
-  };
+  return publicMessage(
+    "white_check_mark",
+    `\`${resourceName}\` foi removido com sucesso.`
+  );
 }

@@ -1,26 +1,27 @@
 import { addResource, getResourceByName } from "../supabase/index.js";
+import { privateMessage, publicMessage } from "../utils/message.js";
 
 export async function handleAddAction(externalId, resourceName) {
   const resource = await getResourceByName(externalId, resourceName);
 
   if (resource) {
-    return {
-      type: "ephemeral",
-      text: `:warning: \`${resourceName}\` já existe.`,
-    };
+    return privateMessage(
+      "warning",
+      `\`${resourceName}\` já existe. Use \`/use on {NOME}\` para utilizá-lo.`
+    );
   }
 
   const success = await addResource(externalId, resourceName);
 
   if (!success) {
-    return {
-      type: "ephemeral",
-      text: `:warning: Não foi possível adicionar devido à um erro interno`,
-    };
+    return privateMessage(
+      "warning",
+      `:warning: Não foi possível adicionar \`${resourceName}\`. Tente novamente mais tarde.`
+    );
   }
 
-  return {
-    type: "in_channel",
-    text: `:white_check_mark: \`${resourceName}\` cadastrado com sucesso.`,
-  };
+  return publicMessage(
+    "white_check_mark",
+    `\`${resourceName}\` cadastrado com sucesso. Use \`/use on {NOME}\` para utilizá-lo.`
+  );
 }
