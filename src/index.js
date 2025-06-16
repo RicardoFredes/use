@@ -1,11 +1,14 @@
-import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { main } from "./main.js";
+import dotenv from "dotenv";
+import { main } from "./main.js"
+import express from "express";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const dotenvPath = path.join(__dirname, "..", ".env");
+dotenv.config({ path: dotenvPath });
 
 const app = express();
 

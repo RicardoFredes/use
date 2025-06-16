@@ -1,6 +1,6 @@
 import { parseSlackPayload } from "./parseSlackPayload.js";
 import { parseCommandText } from "./parseCommandText.js";
-import { executeAction } from "./executeAction.js";
+import { executeAction } from "./actions/index.js";
 import {
   buildSlackMessage,
   buildErrorMessage,
@@ -27,6 +27,7 @@ export async function main(requestBody) {
 
     // 3. Executar a ação
     const actionResult = await executeAction(
+      slackData.channelId,
       resource,
       action,
       slackData.userId,

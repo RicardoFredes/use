@@ -10,11 +10,29 @@ Content-Type: application/json
   "team_id":"T091LK76W57",
   "team_domain":"eu-sa-grupo",
   "channel_id":"C091LK7NYJD",
+  "user_name":"desenvolvedorfredes",
+  "command":"/use",
+  "text":"list",
+  "api_app_id":"A0911LFMU6A",
+  "is_enterprise_install":"false",
+  "response_url":"https://hooks.slack.com/commands/T091LK76W57/9049462521906/EV1SvoLSiCoMMfpciLyz1zzb",
+  "trigger_id":"9049462522338.9054653234177.65618ffe48da6dce0934d8613fe2a2fa"
+}
+
+### API
+POST http://localhost:3000/api
+Content-Type: application/json
+
+{
+  "token":"tV35RaPP48hYn9kf8Hcz31yF",
+  "team_id":"T091LK76W57",
+  "team_domain":"eu-sa-grupo",
+  "channel_id":"C091LK7NYJD",
   "channel_name":"social",
   "user_id":"U091LK76W81",
   "user_name":"desenvolvedorfredes",
   "command":"/use",
-  "text":"list vassoura",
+  "text":"on xuxu",
   "api_app_id":"A0911LFMU6A",
   "is_enterprise_install":"false",
   "response_url":"https://hooks.slack.com/commands/T091LK76W57/9049462521906/EV1SvoLSiCoMMfpciLyz1zzb",
