@@ -13,7 +13,7 @@ export async function handleOnAction(externalId, resourceName, userId) {
   if (!resource.user) {
     await updateResourceData(resource.id, userId);
     return publicMessage(
-      "white_check_mark",
+      "",
       `\`${resourceName}\` está agora com <@${userId}>.`
     );
   }

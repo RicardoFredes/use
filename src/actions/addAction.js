@@ -7,7 +7,7 @@ export async function handleAddAction(externalId, resourceName) {
   if (resource) {
     return privateMessage(
       "warning",
-      `\`${resourceName}\` já existe. Use \`/use on {NOME}\` para utilizá-lo.`
+      `\`${resourceName}\` já existe.\n Execute \`/use on ${resourceName}\` para utilizá-lo.`
     );
   }
 
@@ -22,6 +22,6 @@ export async function handleAddAction(externalId, resourceName) {
 
   return publicMessage(
     "white_check_mark",
-    `\`${resourceName}\` cadastrado com sucesso. Use \`/use on {NOME}\` para utilizá-lo.`
+    `\`${resourceName}\` cadastrado com sucesso. Execute \`/use on ${resourceName}\` para utilizá-lo.`
   );
 }

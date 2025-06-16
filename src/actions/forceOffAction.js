@@ -12,7 +12,7 @@ export async function handleForceOffAction(externalId, resourceName, userId) {
   if (!resource.user) {
     await updateResourceData(resource.id, null);
     return privateMessage(
-      "warning",
+      "eyeglasses",
       `\`${resourceName}\` já está liberado. Não há ninguém usando.`
     );
   }

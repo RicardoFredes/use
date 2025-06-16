@@ -7,7 +7,7 @@ export async function handleListAction(externalId) {
   if (!Object.keys(resources).length) {
     return privateMessage(
       "",
-      "Nenhum recurso cadastrado.\n`/use add {NOME}` para adicionar um recurso."
+      "Nenhum recurso cadastrado.\n Execute `/use add [recurso]` para adicionar um recurso."
     );
   }
 

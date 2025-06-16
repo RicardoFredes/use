@@ -1,5 +1,5 @@
 const DEFAULT_ICON = "robot_face";
-const DISABLE_SHOW_ICON = true;
+const DISABLE_SHOW_ICON = false;
 
 function getText(iconName, message) {
   if (DISABLE_SHOW_ICON) return message;
