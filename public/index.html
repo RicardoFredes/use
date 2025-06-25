@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Use — Gerencie Recursos no Slack</title>
+    <meta name="slack-app-id" content="A0911LFMU6A" />
+    <link rel="shortcut icon" href="use-things.svg" type="image/x-icon" />
+
+    <title>Use Things — Gerencie Recursos no Slack</title>
     <script src="https://unpkg.com/@unocss/runtime"></script>
     <style>
       body {
@@ -11,25 +14,65 @@
       }
     </style>
   </head>
-  <body class="bg-black text-white min-h-screen flex flex-col items-center px-4 py-10">
+  <body
+    class="bg-black text-white min-h-screen flex flex-col items-center px-4 py-10"
+  >
     <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold mb-2">USE</h1>
+      <img
+        src="use-things.svg"
+        alt="Use Things Logo"
+        height="64"
+        width="64"
+        loading="lazy"
+      />
+      <h1 class="text-4xl font-bold mb-2">Use Things</h1>
       <p class="text-lg text-gray-300 max-w-xl mx-auto">
-        Gerencie ambientes de staging, contas compartilhadas e dispositivos de teste diretamente pelo Slack.
+        <strong> Use Things</strong> é um aplicativo para Slack que ajuda seu
+        time a organizar o compartilhamento de recursos. Adicione ou remova
+        itens, faça reservas e saiba quem está utilizando cada recurso em tempo
+        real. Entre na fila de espera ou agende sua próxima utilização com
+        antecedência. Se o recurso for muito disputado, defina um tempo máximo
+        de uso.
       </p>
+      <p>São muitas possibilidades — então, <code>use</code> agora mesmo!</p>
+      <div>
+        <a
+          href="https://slack.com/oauth/v2/authorize?client_id=9054653234177.9035695742214&scope=commands&user_scope="
+        >
+          <img
+            alt="Add to Slack"
+            height="40"
+            width="139"
+            src="https://platform.slack-edge.com/img/add_to_slack.png"
+            srcset="
+              https://platform.slack-edge.com/img/add_to_slack.png    1x,
+              https://platform.slack-edge.com/img/add_to_slack@2x.png 2x
+            "
+          />
+        </a>
+      </div>
     </header>
 
     <section class="max-w-xl text-center mb-14">
-      <h2 class="text-2xl font-semibold mb-4">🛠️ Criado para times de desenvolvimento</h2>
+      <h2 class="text-2xl font-semibold mb-4">
+        🛠️ Criado para times de desenvolvimento
+      </h2>
       <p class="text-gray-400">
-        Use comandos simples no Slack para coordenar o uso de recursos como <span class="italic">staging-api</span>, <span class="italic">figma-pro</span> ou <span class="italic">iphone13</span>.
-        Evite conflitos, filas escondidas e surpresas desagradáveis.
+        Use comandos simples no Slack para coordenar o uso de recursos como
+        <span class="italic">staging-api</span>,
+        <span class="italic">figma-pro</span> ou
+        <span class="italic">iphone13</span>. Evite conflitos, filas escondidas
+        e surpresas desagradáveis.
       </p>
     </section>
 
     <section class="w-full max-w-2xl mb-14">
-      <h2 class="text-xl font-semibold mb-4 text-center">📋 Exemplos de comandos</h2>
-      <div class="bg-white text-black rounded-xl p-6 shadow-lg text-left space-y-2 text-sm">
+      <h2 class="text-xl font-semibold mb-4 text-center">
+        📋 Exemplos de comandos
+      </h2>
+      <div
+        class="bg-white text-black rounded-xl p-6 shadow-lg text-left space-y-2 text-sm"
+      >
         <code class="block">/use add staging-api</code>
         <code class="block">/use on staging-api</code>
         <code class="block">/use off staging-api</code>
@@ -62,8 +105,10 @@
       </ul>
     </section>
 
-    <footer class="text-sm text-gray-500 text-center mt-auto pt-10 border-t border-white/10 w-full">
-      <p>© 2025 Use — Para times que compartilham recursos</p>
+    <footer
+      class="text-sm text-gray-500 text-center mt-auto pt-10 border-t border-white/10 w-full"
+    >
+      <p>© 2025 Use Things — Para times que compartilham recursos</p>
     </footer>
   </body>
 </html>
