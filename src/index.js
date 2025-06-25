@@ -42,7 +42,7 @@ app.post("/api/slack", async (req, res) => {
 });
 
 app.get("/api/slack/install", (req, res) => {
-  const clientId = "9054653234177.903569574221";
+  const clientId = "9054653234177.9035695742214";
   const scope = encodeURIComponent("commands,chat:write,users:read");
   const slackAuthUrl = `https://slack.com/oauth/v2/authorize?client_id=${clientId}&scope=${scope}`;
   res.redirect(slackAuthUrl);
