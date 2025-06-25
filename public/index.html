@@ -7,17 +7,89 @@
     <link rel="shortcut icon" href="use-things.svg" type="image/x-icon" />
 
     <title>Use Things — Gerencie Recursos no Slack</title>
-    <script src="https://unpkg.com/@unocss/runtime"></script>
     <style>
       body {
         font-family: system-ui, sans-serif;
+        background-color: black;
+        color: white;
+        margin: 0;
+        font-size: 16px;
+        line-height: 2;
+      }
+
+      footer,
+      header,
+      section {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+      }
+
+      p {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .text-lg {
+        font-size: 1.25rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      code {
+        background-color: white;
+        color: black;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-family: monospace, monospace;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.5rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .card {
+        background-color: white;
+        color: black;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem auto;
+      }
+
+      .block {
+        display: block;
       }
     </style>
   </head>
-  <body
-    class="bg-black text-white min-h-screen flex flex-col items-center px-4 py-10"
-  >
-    <header class="text-center mb-12">
+  <body>
+    <header>
       <img
         src="use-things.svg"
         alt="Use Things Logo"
@@ -25,17 +97,19 @@
         width="64"
         loading="lazy"
       />
-      <h1 class="text-4xl font-bold mb-2">Use Things</h1>
-      <p class="text-lg text-gray-300 max-w-xl mx-auto">
+      <h1 class="title">Use Things</h1>
+      <p>
         <strong> Use Things</strong> é um aplicativo para Slack que ajuda seu
-        time a organizar o compartilhamento de recursos. Adicione ou remova
-        itens, faça reservas e saiba quem está utilizando cada recurso em tempo
-        real. Entre na fila de espera ou agende sua próxima utilização com
-        antecedência. Se o recurso for muito disputado, defina um tempo máximo
-        de uso.
+        time a organizar o compartilhamento de recursos.
       </p>
-      <p>São muitas possibilidades — então, <code>use</code> agora mesmo!</p>
-      <div>
+      <p>
+        Adicione ou remova itens. Faça reservas e saiba quem está utilizando
+        cada recurso em tempo real. Entre na fila de espera ou agende sua
+        próxima utilização com antecedência. Se o recurso for muito disputado,
+        defina um tempo máximo de uso.
+      </p>
+      <p class="text-lg">São muitas possibilidades — então, <code>/use</code> agora mesmo!</p>
+      <p>
         <a
           href="https://slack.com/oauth/v2/authorize?client_id=9054653234177.9035695742214&scope=commands&user_scope="
         >
@@ -50,54 +124,69 @@
             "
           />
         </a>
-      </div>
+      </p>
     </header>
 
-    <section class="max-w-xl text-center mb-14">
-      <h2 class="text-2xl font-semibold mb-4">
-        🛠️ Criado para times de desenvolvimento
-      </h2>
-      <p class="text-gray-400">
-        Use comandos simples no Slack para coordenar o uso de recursos como
-        <span class="italic">staging-api</span>,
-        <span class="italic">figma-pro</span> ou
-        <span class="italic">iphone13</span>. Evite conflitos, filas escondidas
-        e surpresas desagradáveis.
-      </p>
+    <section>
+      <h2>Guia rápido</h2>
+      <p>Abaixo segue a relação de comandos que você tem acesso:</p>
+      <table>
+        <tr>
+          <th>Comando</th>
+          <th>Descrição</th>
+        </tr>
+        <tr>
+          <td><code>/use help</code></td>
+          <td>Apresenta a lista completa de comandos</td>
+        </tr>
+        <tr>
+          <td><code>/use add &lt;nome do recurso&gt;</code></td>
+          <td>Adiciona um novo recurso para reserva. Isso evita que erros de digitação levem a resersas dos mesmos recursos.</td>
+        </tr>
+        <tr>
+          <td><code>/use on &lt;nome do recurso&gt;</code></td>
+          <td>Faz uma reserva no recurso especificado. Em caso de já estar em uso, adiciona o usuário à fila de espera.</td>
+        </tr>
+        <tr>
+          <td><code>/use off &lt;nome do recurso&gt;</code></td>
+          <td>Libera o recurso especificado</td>
+        </tr>
+        <tr>
+          <td><code>/use list</code></td>
+          <td>Lista todos os recursos e suas reservas daquele canal</td>
+        </tr>
+        <tr>
+          <td><code>/use force-off &lt;nome do recurso&gt;</code></td>
+          <td>Remove a reserva de um recurso, mesmo que esteja em uso</td>
+        </tr>
+      </table>
     </section>
 
-    <section class="w-full max-w-2xl mb-14">
-      <h2 class="text-xl font-semibold mb-4 text-center">
-        📋 Exemplos de comandos
-      </h2>
-      <div
-        class="bg-white text-black rounded-xl p-6 shadow-lg text-left space-y-2 text-sm"
-      >
+    <!-- <section>
+      <h2>📋 Como usar</h2>
+      <p>
+        Depois de instalar o <strong>Use Things</strong> no slack, o comando
+        <code>/use</code> ficará disponível e você poderá chamá-lo em qualquer
+        canal. O <code>/use</code> é o comando principal para gerenciar recursos
+        e é escopado dentro do canal onde você o utiliza. Isso significa que
+        cada canal pode ter seus próprios recursos e reservas, evitando
+        confusões entre equipes.
+      </p>
+      <p>
+        Seu primeiro passo é adicionar o nome de cada recurso, que será
+        reservado no canal. Dessa forma, evitamos que erros de digitação, possam
+        causar problemas no compartilhamento de itens. Adicione um recurso com o
+        comando <code>/use add</code> seguido do nome do recurso. Por exemplo,
+        para adicionar um recurso chamado "staging-api", você usaria:
+      </p>
+      <div class="card">
         <code class="block">/use add staging-api</code>
-        <code class="block">/use on staging-api</code>
-        <code class="block">/use off staging-api</code>
-        <code class="block">/use list</code>
-        <code class="block">/use on iphone13</code>
-        <code class="block">/use force-off vpn-teste</code>
       </div>
-    </section>
+    </section> -->
 
-    <section class="max-w-xl text-center mb-14">
-      <h2 class="text-xl font-semibold mb-4">⚙️ Recursos comuns</h2>
-      <p class="text-gray-400">
-        Use funciona com qualquer item compartilhado do time:
-      </p>
-      <ul class="list-none text-gray-300 mt-4 text-sm space-y-1 text-left">
-        <li>• staging-api, staging-db, env-mobile</li>
-        <li>• figma-pro, firebase-teste, conta-admin</li>
-        <li>• iphone13, ipad-mini, macbook-teste</li>
-        <li>• sala-reuniao-1, call-retro, standup-vc</li>
-      </ul>
-    </section>
-
-    <section class="max-w-xl text-center mb-14">
-      <h2 class="text-xl font-semibold mb-4">✅ Benefícios</h2>
-      <ul class="list-none text-gray-300 text-sm space-y-2 text-left">
+    <section>
+      <h2>✅ Benefícios</h2>
+      <ul>
         <li>✔️ Evita conflitos em recursos compartilhados</li>
         <li>✔️ Transparência sobre quem está com o quê</li>
         <li>✔️ Fila automática e notificações privadas</li>
@@ -105,9 +194,7 @@
       </ul>
     </section>
 
-    <footer
-      class="text-sm text-gray-500 text-center mt-auto pt-10 border-t border-white/10 w-full"
-    >
+    <footer>
       <p>© 2025 Use Things — Para times que compartilham recursos</p>
     </footer>
   </body>
