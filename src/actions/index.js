@@ -1,6 +1,7 @@
 import { handleAddAction } from "./addAction.js";
 import { handleDelAction } from "./delAction.js";
 import { handleForceOffAction } from "./forceOffAction.js";
+import { handleDebugAction } from "./handleDebugAction.js";
 import { handleHelpAction } from "./helpAction.js";
 import { handleListAction } from "./listAction.js";
 import { handleOffAction } from "./offAction.js";
@@ -43,6 +44,14 @@ export async function executeAction(
       case "list":
       case "ls":
         return handleListAction(externalId);
+      case "debug":
+        return handleDebugAction({
+          externalId,
+          resource,
+          action,
+          userId,
+          userName,
+        });
       default:
         throw new Error(`Essa ação "${action}" é inválida.`);
     }

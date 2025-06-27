@@ -16,7 +16,7 @@ export async function handleAddAction(externalId, resourceName) {
   if (!success) {
     return privateMessage(
       "warning",
-      `:warning: Não foi possível adicionar \`${resourceName}\`. Tente novamente mais tarde.`
+      `Não foi possível adicionar \`${resourceName}\`. Tente novamente mais tarde.`
     );
   }
 
