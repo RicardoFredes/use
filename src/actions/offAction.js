@@ -10,6 +10,20 @@ export async function handleOffAction(externalId, resourceName, userId) {
   }
 
   if (resource.user !== userId) {
+    // Verifica se o usuário está na fila
+    const userIndexInQueue = resource.queue.indexOf(userId);
+
+    if (userIndexInQueue !== -1) {
+      // Remove o usuário da fila
+      const updatedQueue = resource.queue.filter(id => id !== userId);
+      await updateResourceData(resource.id, resource.user, updatedQueue);
+
+      return privateMessage(
+        "wave",
+        `Você saiu da fila do recurso \`${resourceName}\`.`
+      );
+    }
+
     return privateMessage(
       "warning",
       `\`${resourceName}\` não está em uso por você.`
@@ -33,6 +47,6 @@ export async function handleOffAction(externalId, resourceName, userId) {
 
   return publicMessage(
     "lock",
-    `\`${resourceName}\` foi liberado por <@${userId}> e agora está com <@${nextUser}>.`
+    `\`${resourceName}\` agora está com <@${nextUser}>.`
   );
 }
