@@ -1,13 +1,13 @@
 import { getAllResources } from "../supabase/index.js";
 import { privateMessage } from "../utils/message.js";
 
-export async function handleListAction(externalId) {
+export async function handleListAction(externalId, commandName = "d") {
   const resources = await getAllResources(externalId);
 
   if (!Object.keys(resources).length) {
     return privateMessage(
       "",
-      "Nenhum recurso cadastrado.\n Execute `/d add [recurso]` para adicionar um recurso."
+      `Nenhum recurso cadastrado.\n Execute \`/${commandName} add [recurso]\` para adicionar um recurso.`
     );
   }
 
