@@ -40,7 +40,8 @@ export async function executeAction(
         return handleDelAction(externalId, resource, userId);
       case "queue":
       case "q":
-        return handleQueueAction(externalId, resource, userId);
+        if (resource) return handleQueueAction(externalId, resource);
+        return handleListAction(externalId);
       case "list":
       case "ls":
         return handleListAction(externalId);
