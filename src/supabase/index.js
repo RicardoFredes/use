@@ -18,8 +18,8 @@ function serializeResources(data) {
 
   for (const i of data) {
     resources[i.name] = {
-      queue: resources.queue,
-      user: resources.user,
+      queue: i.queue || [],
+      user: i.user,
     };
   }
 

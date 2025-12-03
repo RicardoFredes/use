@@ -14,10 +14,20 @@ export async function handleListAction(externalId) {
   let message = "Recursos cadastrados:\n";
 
   for (const resource in resources) {
-    const status = resources[resource].user
-      ? `em uso por <@${resources[resource].user}>`
-      : "disponível";
-    message += `- \`${resource}\` (${status})\n`;
+    const { user, queue } = resources[resource];
+
+    if (!user) {
+      message += `- \`${resource}\` (disponível)\n`;
+    } else {
+      message += `- \`${resource}\` em uso por <@${user}>`;
+
+      if (queue && queue.length > 0) {
+        const queueList = queue.map(userId => `<@${userId}>`).join(", ");
+        message += `\n  Fila: ${queueList}`;
+      }
+
+      message += "\n";
+    }
   }
 
   return privateMessage("", message);
