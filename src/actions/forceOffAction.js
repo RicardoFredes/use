@@ -18,6 +18,8 @@ export async function handleForceOffAction(externalId, resourceName, userId) {
   }
 
   if (!resource.queue.length) {
+    if (!!resource.user) await updateResourceData(resource.id, null);
+
     return publicMessage(
       "exclamation",
       `\`${resourceName}\` foi liberado à força por <@${userId}>.`
